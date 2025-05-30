@@ -117,7 +117,7 @@ def index():
 def download(filename):
     return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
 
-# ✅ Render対応：0.0.0.0 + PORT環境変数にバインド！
+# ✅ Render用ポート設定（必須！）
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+    port = int(os.environ.get("PORT", 5000))  # Renderが用意したポートを使う
+    app.run(host="0.0.0.0", port=port, debug=False)  # 外部からアクセスできるように0.0.0.0を指定
